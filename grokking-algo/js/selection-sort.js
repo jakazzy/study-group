@@ -1,13 +1,11 @@
 "use strict"
 
-let 
-
 const getSmallestNumber = nums => {
     let smallestNumber = nums[0]
     let smallestNumberIndex = 0
 
    for(let x=0; x < nums.length; x++){
-        if(nums[x] < 0){
+        if(nums[x] < smallestNumber){
             smallestNumber = nums[x]
             smallestNumberIndex = x
         }
@@ -21,7 +19,7 @@ const getGreatestNumber = nums =>{
     let greatestNumberIndex = 0
 
    for(let x=0; x < nums.length; x++){
-        if(nums[x] < 0){
+        if(nums[x] > greatestNumber){
             greatestNumber = nums[x]
             greatestNumberIndex = x
         }
@@ -37,10 +35,13 @@ const sortNumbers = (nums, order ='asc') => {
     ? getSmallestNumber 
     : getGreatestNumber
 
-    for(let x=0; x < nums.length; x++){
+    for(let x=nums.length; x > 0 ; x--){
         let index = sortOrder(nums)
-        sortNumbers.push(nums[index])
-        array.splice(index, 1)
+
+        sortedNums.push(nums[index])
+        nums.splice(index, 1)
     }
     return sortedNums
 }
+
+sortNumbers([2,4,1,5])
